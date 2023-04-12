@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-export default function Counter() {
+export default function Counter({ title }) {
   const [count, setCount] = useState(0);
 
   const names = [{ name: 'mark' }, { name: 'john' }, { name: 'kev' }, { name: 'berry' }, { name: 'sally' }];
@@ -11,6 +12,7 @@ export default function Counter() {
 
   return (
     <div>
+      <h1>{title}</h1>
       <button type="button" onClick={handleClick}>Increment</button>
       {count <= 0 ? '' : (<button type="button" onClick={() => setCount(count - 1)}>Decrement</button>)}
       <button type="button" onClick={() => setCount(0)}>Reset</button>
@@ -27,10 +29,10 @@ export default function Counter() {
   );
 }
 
-// Counter.propTypes = {
-//   title: PropTypes.string,
-// };
+Counter.propTypes = {
+  title: PropTypes.string,
+};
 
-// Counter.defualtProps = {
-//   title: 'Counter Defualt',
-// };
+Counter.defaultProps = {
+  title: 'Defualt Counter',
+};
